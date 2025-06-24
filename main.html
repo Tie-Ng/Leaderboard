@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Leaderboard Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Firebase SDK v8 -->
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+<style>
+    @keyframes shake {
+        0% {
+            transform: translate(1px, 1px) rotate(0deg);
+        }
+
+        10% {
+            transform: translate(-1px, -2px) rotate(-1deg);
+        }
+
+        20% {
+            transform: translate(-3px, 0px) rotate(1deg);
+        }
+
+        30% {
+            transform: translate(3px, 2px) rotate(0deg);
+        }
+
+        40% {
+            transform: translate(1px, -1px) rotate(1deg);
+        }
+
+        50% {
+            transform: translate(-1px, 2px) rotate(-1deg);
+        }
+
+        60% {
+            transform: translate(-3px, 1px) rotate(0deg);
+        }
+
+        70% {
+            transform: translate(3px, 1px) rotate(-1deg);
+        }
+
+        80% {
+            transform: translate(-1px, -1px) rotate(1deg);
+        }
+
+        90% {
+            transform: translate(1px, 2px) rotate(0deg);
+        }
+
+        100% {
+            transform: translate(1px, -2px) rotate(-1deg);
+        }
+    }
+
+    .animate-shake {
+        animation: shake 0.5s infinite;
+    }
+</style>
+
+
+<body class="bg-gray-900 text-white min-h-screen flex items-center justify-center p-4">
+
+    <div class="w-full max-w-xl bg-gray-800 p-6 rounded-xl shadow-lg">
+        <h1 class="text-3xl font-bold text-center text-yellow-400 mb-6">🎯 Leaderboard Admin</h1>
+        <div id="rewardNotice" class="bg-yellow-400 text-black text-center py-2 font-bold animate-pulse">
+            🎁 Giải thưởng cho #1 là💲1000💲vào ngày dd/mm/yy! 🎉 (Test)
+        </div>
+
+
+        <div id="leaderboard" class="space-y-2 mb-6">
+
+            <!-- Danh sách người chơi -->
+        </div>
+
+        <div id="admin-controls" class="hidden space-y-2">
+            <h2 class="text-xl font-semibold text-green-400">🛠️ Quản lý điểm</h2>
+            <input id="playerName" placeholder="Tên người chơi"
+                class="w-full p-2 rounded bg-gray-700 placeholder-gray-400" />
+            <input id="playerPoints" type="number" placeholder="Điểm"
+                class="w-full p-2 rounded bg-gray-700 placeholder-gray-400" />
+            <input id="playerPassword" type="password" placeholder="Mật khẩu"
+                class="w-full p-2 rounded bg-gray-700 placeholder-gray-400" />
+
+            <button onclick="addPlayer()" type="button"
+                class="w-full bg-green-600 hover:bg-green-700 py-2 px-4 rounded text-white font-bold">
+                ➕ Thêm người chơi
+            </button>
+        </div>
+
+        <div id="admin-login" class="mt-6 space-y-2">
+            <input id="adminKey" placeholder="Only For Admin"
+                class="w-full p-2 rounded bg-gray-700 placeholder-gray-400" />
+            <button onclick="checkAdmin()" type="button"
+                class="w-full bg-blue-600 hover:bg-blue-700 py-2 px-4 rounded text-white font-bold">
+                🔑 Xác nhận quyền admin
+            </button>
+        </div>
+    </div>
+
+    <script src="./js/config.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+
+</html>
